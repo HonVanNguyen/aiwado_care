@@ -1,2 +1,2 @@
 export { homeStyles, homeScreenStyles } from "./home";
-export { mainTabStyle  } from "./tab";
+export { mainTabStyle } from "./tab";

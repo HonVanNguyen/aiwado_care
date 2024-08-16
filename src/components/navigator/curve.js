@@ -55,6 +55,6 @@ export const getPathDown = (width, iHeight, centerWidth) => {
   return `${line(width, height)} ${lineCurvedDown(
     width / 2 - circleWidth / 2,
     height,
-    circleWidth
+    circleWidth,
   )}`;
 };
