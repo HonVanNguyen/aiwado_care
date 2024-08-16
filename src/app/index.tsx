@@ -1,33 +1,51 @@
 // Main.tsx
-import React, { useEffect, ReactNode } from 'react';
-import * as SplashScreen from 'expo-splash-screen';
-import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import React, { useEffect, ReactNode } from "react";
+import * as SplashScreen from "expo-splash-screen";
+import { View, StyleSheet, ImageBackground, ScrollView } from "react-native";
+import { useCustomFonts } from "@/styles/font/FontApp";
 
 SplashScreen.preventAutoHideAsync();
 
+// font
+
 const Main: React.FC<{ children: ReactNode }> = ({ children }) => {
-  let [fontsLoaded, fontError] = useFonts({ Inter_900Black });
-
+  const fontsState = useCustomFonts();
   useEffect(() => {
-    if (fontsLoaded || fontError) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, fontError]);
+    async function prepare() {
+      try {
+        // Prevent the splash screen from hiding
+        await SplashScreen.preventAutoHideAsync();
 
-  if (!fontsLoaded && !fontError) {
-    return null;
+        if (fontsState?.fontsLoaded) {
+          // Hide the splash screen after fonts are loaded
+          await SplashScreen.hideAsync();
+        }
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+    if (fontsState?.fontsLoaded) {
+      prepare();
+    }
+  }, [fontsState?.fontsLoaded]);
+
+  if (!fontsState?.fontsLoaded) {
+    return null; // Don't render anything until the fonts are loaded
   }
 
-  // return <View style={styles.container}>{children}</View>;
+  if (fontsState.fontError) {
+    console.error("Error loading fonts:", fontsState.fontError);
+    return null;
+  }
   return (
     <ImageBackground
-      source={require('../common/assets/images/aiwado-background/bg-aiwado@3x.png.png')} // Adjust the path to your image
+      source={require("../common/assets/images/aiwado-background/bg-aiwado@3x.png.png")} // Adjust the path to your image
       style={styles.backgroundImage}
     >
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {children}
-      </View>
+        <View style={styles.bottomHiden}></View>
+      </ScrollView>
     </ImageBackground>
   );
 };
@@ -38,7 +56,10 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover', // 'cover' scales the image to cover the background
+    resizeMode: "cover", // 'cover' scales the image to cover the background
+  },
+  bottomHiden: {
+    height: 230,
   },
 });
 

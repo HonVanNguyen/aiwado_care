@@ -34,25 +34,28 @@ const _RootLayout = () => {
     <>
       <Tab.Navigator
         screenOptions={{
-          tabBarStyle: mainTabStyle.tabBarStyle
+          tabBarStyle: mainTabStyle.tabBarStyle,
         }}
-
       >
         {/* home page */}
-        <Tab.Screen 
+        <Tab.Screen
           name="index"
           component={HomeScreen}
           options={{
             headerShown: false,
             tabBarItemStyle: mainTabStyle.tabBarItemStyle,
             tabBarIcon: ({ focused }) => (
-              <View style={focused ? mainTabStyle.selectView : mainTabStyle.nomalView}>
+              <View
+                style={
+                  focused ? mainTabStyle.selectView : mainTabStyle.nomalView
+                }
+              >
                 <Image
                   style={{
                     width: 24,
                     height: 24,
                   }}
-                  source={focused ? iconsSelect['index'] : icons['index']}
+                  source={focused ? iconsSelect["index"] : icons["index"]}
                 />
               </View>
             ),
@@ -70,14 +73,18 @@ const _RootLayout = () => {
               margin: 0,
               backgroundColor: "white",
             },
-            tabBarIcon: ({focused}) => (
-              <View style={focused ? mainTabStyle.selectView : mainTabStyle.nomalView}>
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={
+                  focused ? mainTabStyle.selectView : mainTabStyle.nomalView
+                }
+              >
                 <Image
                   style={{
                     width: 24,
                     height: 24,
                   }}
-                  source= {focused ? iconsSelect['gift'] : icons['gift']}
+                  source={focused ? iconsSelect["gift"] : icons["gift"]}
                 />
               </View>
             ),
@@ -112,7 +119,7 @@ const _RootLayout = () => {
                     width: 36,
                     height: 36,
                   }}
-                  source= {icons['scan']}
+                  source={icons["scan"]}
                 />
               </View>
             ),
@@ -136,15 +143,18 @@ const _RootLayout = () => {
               margin: 0,
               backgroundColor: "white",
             },
-            tabBarIcon: ({focused}) => (
-              <View style={focused ? mainTabStyle.selectView : mainTabStyle.nomalView}>
-
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={
+                  focused ? mainTabStyle.selectView : mainTabStyle.nomalView
+                }
+              >
                 <Image
                   style={{
                     width: 24,
                     height: 24,
                   }}
-                  source={focused ? iconsSelect['bell'] : icons['bell']}
+                  source={focused ? iconsSelect["bell"] : icons["bell"]}
                 />
               </View>
             ),
@@ -163,15 +173,18 @@ const _RootLayout = () => {
               margin: 0,
               backgroundColor: "white",
             },
-            tabBarIcon: ({focused}) => (
-              <View style={focused ? mainTabStyle.selectView : mainTabStyle.nomalView}>
-
+            tabBarIcon: ({ focused }) => (
+              <View
+                style={
+                  focused ? mainTabStyle.selectView : mainTabStyle.nomalView
+                }
+              >
                 <Image
                   style={{
                     width: 24,
                     height: 24,
                   }}
-                  source={focused ? iconsSelect['personal'] : icons['personal']}
+                  source={focused ? iconsSelect["personal"] : icons["personal"]}
                 />
               </View>
             ),
@@ -185,4 +198,3 @@ const _RootLayout = () => {
   );
 };
 export default _RootLayout;
-

@@ -16,25 +16,23 @@ export const mainTabStyle = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowRadius: 10,
     shadowOpacity: 0.1,
-    justifyContent: 'center',
-    alignItems: 'center',
-
+    justifyContent: "center",
+    alignItems: "center",
   },
-  tabBarItemStyle:{
-    justifyContent:'center',
-    alignItems: 'center',
+  tabBarItemStyle: {
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "white",
   },
-  selectView:{
+  selectView: {
     width: 40,
     height: 40,
-    backgroundColor: '#f6b1b6',
+    backgroundColor: "#f6b1b6",
     borderRadius: 100,
-    justifyContent: 'center',
-    alignItems: 'center'
-
+    justifyContent: "center",
+    alignItems: "center",
   },
-  nomalView:{
-    backgroundColor: 'transparent'
+  nomalView: {
+    backgroundColor: "transparent",
   },
 });
